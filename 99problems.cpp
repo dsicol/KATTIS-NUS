@@ -1,8 +1,3 @@
-//A0237056E
-//Leo Zheng Rui, Darren
-//LAB 09
-//Cai Jia Lin
-
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
