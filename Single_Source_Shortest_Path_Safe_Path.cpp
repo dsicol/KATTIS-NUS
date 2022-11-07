@@ -41,7 +41,6 @@ int main() {
             for (int i = 0; i < V - 1; i++) {  
 
                 bool modified = false; 
-                bool k1 = false;   
 
                 for (int u = 0; u < V; u++) {
 
@@ -50,16 +49,17 @@ int main() {
                         for (auto &[v, w] : AL[u]) {       
 
                             if (dist[u] + w >= dist[v]) {
+                                
                                 continue;   
+                                
                             }
 
                             int currjunction = 1 + junctions[u];
 
                             if (k == 1 && t != s) {
-
-                                k1 = true;
+                                
                                 break;
-
+                                
                             } else if (currjunction < k) { // process k - 1 edges
 
                                 dist[v] = dist[u] + w;  
@@ -84,7 +84,7 @@ int main() {
 
                 }  
 
-                if (!modified || k1) break;  
+                if (!modified) break;  
 
             }
 
