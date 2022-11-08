@@ -41,6 +41,7 @@ int main() {
             for (int i = 0; i < V - 1; i++) {  
 
                 bool modified = false; 
+                bool k1 = false;   
 
                 for (int u = 0; u < V; u++) {
 
@@ -49,34 +50,23 @@ int main() {
                         for (auto &[v, w] : AL[u]) {       
 
                             if (dist[u] + w >= dist[v]) {
-                                
                                 continue;   
-                                
                             }
 
                             int currjunction = 1 + junctions[u];
 
                             if (k == 1 && t != s) {
-                                
+
+                                k1 = true;
                                 break;
-                                
-                            } else if (currjunction < k) { // process k - 1 edges
+
+                            } else if (currjunction < k || (currjunction == k && v == t)) { // process k - 1 edges
 
                                 dist[v] = dist[u] + w;  
                                 junctions[v] = currjunction;
                                 modified = true; 
                                 
-                            } else { 
-
-                                if (v == t) { // if t, process last edge, else do nothing (INF)
-
-                                    dist[v] = dist[u] + w;
-                                    ++junctions[v];
-                                    modified = true; 
-
-                                }
-
-                            }
+                            } 
                            
                         }
 
@@ -84,12 +74,12 @@ int main() {
 
                 }  
 
-                if (!modified) break;  
+                if (!modified || k1) break;  
 
             }
 
             cout << ((dist[t] != INF) ? dist[t] : -1) << '\n';
-            
+
         }
 
     }
