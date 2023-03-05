@@ -10,6 +10,7 @@ int main() {
     int subStrings = 0;
     int countOfA = 0;
     
+    // Linear time solution
     for (char&c : s) {
         if (c == 'X') {
             countOfA++;
