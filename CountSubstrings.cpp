@@ -3,22 +3,21 @@ using namespace std;
 
 int main() {
 
-    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-    stack<string> substrings;
+    ios::sync_with_stdio(false); cin.tie(NULL);
 
     string s; cin >> s;
     reverse(s.begin(), s.end());
-    int res = 0;
-    int a = 0;
-    int nest = 0;
+    int subStrings = 0;
+    int countOfA = 0;
     
     for (char&c : s) {
         if (c == 'X') {
-            nest++;
+            countOfA++;
         } else if (c == 'A') {
-            a += nest;
+            subStrings += countOfA;
         } 
-        res = a;
     }
-    cout << res;
+    cout << subStrings;
+    return 0;
+
 }
